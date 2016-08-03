@@ -1,0 +1,46 @@
+# shared simulation options for replica exchange
+
+timestep	2.0
+
+# OUTPUT/INPUT                                          
+# Amber/(t,s,x)leap generated parm and crd file  
+parmfile       EAAAG.prmtop  
+ambercoor      EAAAG.inpcrd
+
+
+margin		10.0
+stepspercycle	100
+exclude		scaled1-4
+1-4scaling	0.4
+switching 	on
+switchdist	7.0
+cutoff		12.0
+pairlistdist 	10.0
+rigidBonds	all
+watermodel     tip3p
+
+
+ 
+colvars         on
+colvarsConfig   colvars.conf
+
+# PME settings
+PME		    on
+PMETolerance        1.0e-6 
+PMEInterpOrder      4 
+FFTWUseWisdom       no 
+PMEGridSizeX        80  
+PMEGridSizeY        80  
+PMEGridSizeZ        80 
+
+# Periodic cell
+cellBasisVector1 77.2 0.0 0.0
+cellBasisVector2 0.0 77.2 0.0
+cellBasisVector3 0.0 0.0 77.2 
+cellorigin 0 0 0
+
+# Thermostat
+langevin on
+langevinDamping 10.0
+langevinTemp $temperature
+
